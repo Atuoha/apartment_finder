@@ -1,4 +1,5 @@
 class House {
+  final int id;
   final String name;
   final String location;
   final List<String> imgUrls;
@@ -9,8 +10,12 @@ class House {
   final String description;
   final int kitchens;
   final int sqm;
+  final List<int> contactDetails;
+  final String openTime;
+  final String saleTime;
 
   House({
+    required this.id,
     required this.name,
     required this.location,
     required this.imgUrls,
@@ -21,5 +26,8 @@ class House {
     required this.description,
     required this.kitchens,
     required this.sqm,
+    required this.contactDetails,
+    required this.openTime,
+    required this.saleTime,
   });
 }
