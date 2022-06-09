@@ -4,7 +4,7 @@ import '../model/house.dart';
 
 class HouseData extends ChangeNotifier {
   void toggleFavorite(id) {
-    var house = houses.firstWhere((sing_house) => sing_house.id == id);
+    var house = houses.firstWhere((singHouse) => singHouse.id == id);
 
     switch (isFavorite(id)) {
       case true:
@@ -12,6 +12,21 @@ class HouseData extends ChangeNotifier {
         break;
       case false:
         favoriteHouses.add(house);
+        break;
+      default:
+    }
+    notifyListeners();
+  }
+
+  void toggleSave(id) {
+    var house = houses.firstWhere((singHouse) => singHouse.id == id);
+
+    switch (isSaved(id)) {
+      case true:
+        savedHouses.remove(house);
+        break;
+      case false:
+        savedHouses.add(house);
         break;
       default:
     }
@@ -28,10 +43,15 @@ class HouseData extends ChangeNotifier {
     return favoriteHouses.any((house) => house.id == id);
   }
 
+  bool isSaved(id) {
+    return savedHouses.any((house) => house.id == id);
+  }
+
   House findById(id) {
     return houses.firstWhere((house) => house.id == id);
   }
 
+  List savedHouses = [];
   List favoriteHouses = [];
   List nearHouses = [];
   List agencyRecommends = [];
