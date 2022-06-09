@@ -32,8 +32,8 @@ class NearHouses extends StatelessWidget {
               ),
             )
           : ListView.builder(
-        scrollDirection: Axis.horizontal,
-
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.only(top: 15),
               itemCount: houseData.nearHouses.length,
               itemBuilder: (context, index) => SingleHouse(
                 id: houseData.nearHouses[index].id,

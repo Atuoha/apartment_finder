@@ -32,8 +32,8 @@ class AgencyRecommended extends StatelessWidget {
               ),
             )
           : ListView.builder(
-        scrollDirection: Axis.horizontal,
-
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.only(top: 15),
               itemCount: houseData.agencyRecommends.length,
               itemBuilder: (context, index) => SingleHouse(
                 id: houseData.agencyRecommends[index].id,

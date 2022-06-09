@@ -38,6 +38,7 @@ dependencies:
   carousel_slider: ^4.1.1
   readmore: ^2.1.0
   flutter_svg: ^1.1.0
+  flutter_linkify: ^5.0.2
 
 dev_dependencies:
   flutter_test:

@@ -12,7 +12,7 @@ class TopHouses extends StatelessWidget {
     return Consumer<HouseData>(
       builder: (context, houseData, child) => ListView.builder(
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.zero,
+        padding: const EdgeInsets.only(top:15),
         itemCount: houseData.houses.length,
         itemBuilder: (context, index) => SingleHouse(
           id: houseData.houses[index].id,

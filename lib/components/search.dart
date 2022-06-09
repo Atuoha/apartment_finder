@@ -8,7 +8,7 @@ class SearchContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(
-        vertical: 20,
+        vertical: 15,
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),

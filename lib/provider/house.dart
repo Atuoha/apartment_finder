@@ -394,7 +394,7 @@ class HouseData extends ChangeNotifier {
     ),
     House(
       id: 10,
-      name: 'Central Otago, Central Otago / Lakes District 9320',
+      name: 'Central Otago, Central Otago',
       location: '6 Dawson Place, Alexandra',
       imgUrls: [
         'https://d1tc5nu51f8a53.cloudfront.net/app/livestore/accounts/3284/listings/3311825/images/6Dawson_placeAlexand_6dfc-edce-16d4-6de4-d92c-d59f-fe02-5002_20220526090337.jpg',

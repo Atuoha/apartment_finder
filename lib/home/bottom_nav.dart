@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../constants/color.dart';
+import '../screens/agents.dart';
 import '../screens/home.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -15,7 +16,14 @@ class _BottomNavState extends State<BottomNav> {
   int pageIndex = 0;
   final List _pages = [
     const HomeScreen(),
+    AgentsScreen(),
   ];
+
+  void selectPage(int index) {
+    setState(() {
+      pageIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +34,11 @@ class _BottomNavState extends State<BottomNav> {
     );
     return Scaffold(
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        padding: const EdgeInsets.symmetric(vertical: 15.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(50),
           child: BottomNavigationBar(
+            onTap: selectPage,
             backgroundColor: Colors.white,
             type: BottomNavigationBarType.fixed,
             showSelectedLabels: false,
@@ -37,31 +46,40 @@ class _BottomNavState extends State<BottomNav> {
             selectedItemColor: kPurple,
             currentIndex: pageIndex,
             items: [
-              const BottomNavigationBarItem(
-                icon: Icon(Icons.home),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  // pageIndex == 0 ? Icons.home : Icons.home_outlined,
+                  Icons.home,
+                  color: pageIndex == 0 ? kPurple : kPurple_lite,
+                ),
                 label: '',
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/icons/home_search.svg',
-                  color: kPurple,
+                  color: pageIndex == 1 ? kPurple : kPurple_lite,
                 ),
                 label: '',
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/icons/notification.svg',
-                  color: kPurple,
+                  color: pageIndex == 2 ? kPurple : kPurple_lite,
                 ),
                 label: '',
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/icons/chat.svg',
-                  color: kPurple,
+                  color: pageIndex == 3 ? kPurple : kPurple_lite,
                 ),
                 label: '',
               ),
+              //  BottomNavigationBarItem(
+              //   icon:Icon(Icons.favorite_border),
+              //   label: '',
+              // ),
+
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/icons/home_mark.svg',
@@ -94,6 +112,7 @@ class _BottomNavState extends State<BottomNav> {
         ],
       ),
       backgroundColor: kBackground,
+      extendBody: true,
       body: _pages[pageIndex],
     );
   }
