@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../components/search.dart';
-import '../components/single_agent_card.dart';
+import '../components/single_house_listing.dart';
 import '../constants/color.dart';
-import '../provider/agents.dart';
+import '../provider/house.dart';
 
-class AgentsScreen extends StatelessWidget {
-  const AgentsScreen({Key? key}) : super(key: key);
+class HouseListings extends StatelessWidget {
+  const HouseListings({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +16,7 @@ class AgentsScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            'Discover Agents Around!',
+            'Discover Houses Around!',
             style: TextStyle(
               color: kFont,
               fontSize: 15,
@@ -40,25 +39,25 @@ class AgentsScreen extends StatelessWidget {
                 width: double.infinity,
                 height: double.infinity,
               ),
-              child: GridView.count(
-                crossAxisCount: 2,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                children: Provider.of<AgentData>(context)
-                    .agents
-                    .map(
-                      (agent) => SingleAgentCard(
-                        id: agent.id,
-                        name: agent.name,
-                        imgUrl: agent.imgUrl,
-                        mobile: agent.mobile,
-                     
-                      ),
-                    )
-                    .toList(),
+              child: Consumer<HouseData>(
+                builder: (context, houseData, child) => GridView.count(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 3,
+                  children: houseData.houses
+                      .map(
+                        (house) => SingleHouseListing(
+                          id: house.id,
+                          title: house.name,
+                          location: house.location,
+                          imgUrl: house.imgUrls[0],
+                        ),
+                      )
+                      .toList(),
+                ),
               ),
             ),
-          ),
+          )
         ],
       ),
     );

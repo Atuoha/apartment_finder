@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../constants/color.dart';
+import '../screens/favorite_listings.dart';
+import '../screens/house_listings.dart';
 import '../screens/agents.dart';
 import '../screens/home.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../screens/saved_listings.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({Key? key}) : super(key: key);
@@ -14,9 +18,12 @@ class BottomNav extends StatefulWidget {
 
 class _BottomNavState extends State<BottomNav> {
   int pageIndex = 0;
-  final List _pages = [
-    const HomeScreen(),
+  final List _pages = const [
+    HomeScreen(),
     AgentsScreen(),
+    HouseListings(),
+    FavoriteHouseListings(),
+    SavedHouseListings()
   ];
 
   void selectPage(int index) {
@@ -50,28 +57,28 @@ class _BottomNavState extends State<BottomNav> {
                 icon: Icon(
                   // pageIndex == 0 ? Icons.home : Icons.home_outlined,
                   Icons.home,
-                  color: pageIndex == 0 ? kPurple : kPurple_lite,
+                  color: pageIndex == 0 ? kPurple : Colors.grey,
                 ),
                 label: '',
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/icons/home_search.svg',
-                  color: pageIndex == 1 ? kPurple : kPurple_lite,
+                  color: pageIndex == 1 ? kPurple : Colors.grey,
                 ),
                 label: '',
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/icons/notification.svg',
-                  color: pageIndex == 2 ? kPurple : kPurple_lite,
+                  color: pageIndex == 2 ? kPurple : Colors.grey,
                 ),
                 label: '',
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/icons/chat.svg',
-                  color: pageIndex == 3 ? kPurple : kPurple_lite,
+                  color: pageIndex == 3 ? kPurple : Colors.grey,
                 ),
                 label: '',
               ),
@@ -83,7 +90,7 @@ class _BottomNavState extends State<BottomNav> {
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/icons/home_mark.svg',
-                  color: kPurple,
+                  color: pageIndex == 4 ? kPurple : Colors.grey,
                 ),
                 label: '',
               ),

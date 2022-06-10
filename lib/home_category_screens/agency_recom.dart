@@ -12,25 +12,31 @@ class AgencyRecommended extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<HouseData>(
       builder: (context, houseData, child) => houseData.agencyRecommends.isEmpty
-          ? Center(
-              child: Column(
-                children: [
-                  Image.asset(
-                    'assets/images/oops.jpg',
-                    width: 100,
-                  ),
-                  const SizedBox(height: 10),
-                  const Text(
-                    'Agency Recommended houses are empty!',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: kFont,
-                      fontSize: 18,
+          ? Padding(
+            padding: const EdgeInsets.only(top:13.0),
+            child: Center(
+                child: Column(
+                  children: [
+                    ClipRRect(
+                      borderRadius:BorderRadius.circular(10),
+                      child: Image.asset(
+                        'assets/images/oops.jpg',
+                        width: 280,
+                      ),
                     ),
-                  )
-                ],
+                    const SizedBox(height: 10),
+                    const Text(
+                      'Agency Recommended houses are empty!',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: kFont,
+                        fontSize: 18,
+                      ),
+                    )
+                  ],
+                ),
               ),
-            )
+          )
           : ListView.builder(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.only(top: 15),

@@ -28,19 +28,6 @@ class SingleSmallHouse extends StatelessWidget {
   Widget build(BuildContext context) {
     var houseData = Provider.of<HouseData>(context);
 
-    String fewWords(String sentence) {
-      var length = sentence.length;
-      var wordsToCutOut = 0;
-      if (length < 30) {
-        wordsToCutOut = length - 7;
-      } else if (length < 45) {
-        wordsToCutOut = length - 12;
-      } else if (length > 45) {
-        wordsToCutOut = length - 30;
-      }
-
-      return '${sentence.substring(0, wordsToCutOut)}...';
-    }
 
     Widget customWrap(String assetImage, int number) {
       return Wrap(
@@ -63,7 +50,6 @@ class SingleSmallHouse extends StatelessWidget {
       );
     }
 
-    Size size = MediaQuery.of(context).size;
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
       width: double.infinity,
